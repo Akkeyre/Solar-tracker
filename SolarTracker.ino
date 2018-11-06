@@ -6,7 +6,6 @@
 
 
 #include<Servo.h>
-int ldrvals[4]={0,0,0,0};
 int topleft=0;
 int topright=0;
 int bottomright = 0;
@@ -17,18 +16,11 @@ Servo top;
 int Servo_pos_bottom = 90;
 int Servo_pos_top = 90;
 void ldr_receive(void){
-  ldrvals[0] = analogRead(A0);//topleft
-  ldrvals[1] = analogRead(A1);//topright
-  ldrvals[2] = analogRead(A2);//bottomright
-  ldrvals[3] = analogRead(A3);//bottomleft
-  topleft = ldrvals[0];
-   topright =ldrvals[1];
-   bottomright = ldrvals[2];
-   bottomleft = ldrvals[3];
-  Serial.print(analogRead(A0));
-  Serial.print(",");
-  Serial.print(topright);
-  Serial.println("");
+  topleft =  analogRead(A0);
+   topright =   analogRead(A1) ;
+   bottomright =  analogRead(A2);
+   bottomleft =  analogRead(A3);
+
 }
 
 void setup() {
@@ -39,7 +31,7 @@ void setup() {
   delay(delay_time);
   top.write(Servo_pos_top);
     delay(delay_time);
-    Serial.begin(9600);
+ 
   
 }
 
@@ -121,7 +113,7 @@ void loop() {
       Servo_pos_top = 180;
     }
   }
-  Serial.println(Servo_pos_bottom);
+  
 }
   
   
